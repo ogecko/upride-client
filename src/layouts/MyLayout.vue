@@ -20,12 +20,12 @@
           to="/driver" exact
         />
         <q-route-tab
-          label="Store" icon="fas fa-home" slot="title"
-          to="/" exact
+          label="Shop" icon="fas fa-home" slot="title"
+          to="/shop" exact
         />
         <q-route-tab :count="cartTotal"
           label="Checkout" icon="fas fa-shopping-cart" slot="title"
-          to="/cart" exact
+          to="/checkout" exact
         />
         <q-route-tab
           label="About" icon="fas fa-info" slot="title"

@@ -33,7 +33,7 @@ export default {
       console.log(`New driver: '${code}'`);
       this.$axios.get('statics/products.json', { responseType: 'json' })
         .then(response => this.$store.commit('setProducts', response.data))
-        .then(() => this.$router.push('/') )
+        .then(() => this.$router.push('/shop') )
         .catch( () => this.$q.notify({ color: 'negative', position: 'top', message: 'Invalid Driver Code', icon: 'fas fa-exclamation-triangle' }) );
     }
   }

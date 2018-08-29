@@ -2,10 +2,10 @@
   <q-page padding>
       <h3 class="text-align-center text-weight-bold q-my-xs">In Car Menu</h3>
       <div class="row justify-center">
-        <q-btn class='col-5 q-ma-xs' color='secondary' label='Snacks &amp; Drinks' @click='$router.push("/menu/snacks")'/>
-        <q-btn class='col-5 q-ma-xs' color='secondary' label='Free Samples' @click='$router.push("/menu/samples")'/>
-        <q-btn class='col-5 q-ma-xs' color='secondary' label='Electronics' @click='$router.push("/menu/electronics")'/>
-        <q-btn class='col-5 q-ma-xs' color='secondary' label='Personal Care' @click='$router.push("/menu/personal")'/>
+        <q-btn class='col-5 q-ma-xs' color='secondary' label='Snacks &amp; Drinks' @click='$router.push("/shop/snacks")'/>
+        <q-btn class='col-5 q-ma-xs' color='secondary' label='Free Samples' @click='$router.push("/shop/samples")'/>
+        <q-btn class='col-5 q-ma-xs' color='secondary' label='Electronics' @click='$router.push("/shop/electronics")'/>
+        <q-btn class='col-5 q-ma-xs' color='secondary' label='Personal Care' @click='$router.push("/shop/personal")'/>
       </div>
       <p class="text-align-center q-body-2 q-mt-md">
         UpRide is the most convenient way to recharge and refresh while in your rideshare vehicle. 
