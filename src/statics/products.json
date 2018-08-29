@@ -1,0 +1,19 @@
+[
+    { "category": "snacks", "sku": "CON-1", "price": 2.50, "name": "Cadbury Dairy Milk Bar", "description": "50g", "image": "1.jpg" },
+    { "category": "snacks", "sku": "CON-2", "price": 2.50, "name": "Eclipse Chewy Mints", "description": "Spearmint", "image": "2.jpg" },
+    { "category": "snacks", "sku": "CON-3", "price": 3.00, "name": "Extra Chewing Gum Spearmint", "description": "14pc Spearmint", "image": "3.jpg" },
+    { "category": "snacks", "sku": "CON-4", "price": 3.00, "name": "Extra Chewing Gum Pepermint", "description": "14pc Peppermint", "image": "4.jpg" },
+    { "category": "snacks", "sku": "CON-5", "price": 3.00, "name": "JC Energy Nut Mix", "description": "45g", "image": "5.jpg" },
+    { "category": "snacks", "sku": "CON-6", "price": 5.00, "name": "Bounce Energy Ball", "description": "40g Coconut Macadamia", "image": "6.jpg" },
+    { "category": "snacks", "sku": "CON-7", "price": 5.00, "name": "Shine+ Energy Shot", "description": "110ml Healthy Energy for your brain", "image": "7.jpg" },
+    { "category": "snacks", "sku": "CON-8", "price": 2.00, "name": "Mount Franklin Bottled Water", "description": "500ml Sourced from Australian Springs", "image": "8.jpg" },
+    { "category": "samples", "sku": "FS-1", "price": 0.00, "name": "Barista Bros Toffee Almond Panna Cotta", "description": "", "image": "9.jpg" },
+    { "category": "samples", "sku": "FS-2", "price": 0.00, "name": "Ella Bache SPF50+ SportsBloc Active", "description": "", "image": "10.jpg" },
+    { "category": "electronics", "sku": "ELE-1", "price": 20.00, "name": "Wired Headphones", "description": "Stereo headphones inc, microphone", "image": "11.jpg" },
+    { "category": "electronics", "sku": "ELE-2", "price": 15.00, "name": "Emergency Phone Charger", "description": "Phone battery charge for 8hrs - disposable", "image": "12.jpg" },
+    { "category": "personal", "sku": "PCR-1", "price": 4.00, "name": "Hero Condoms", "description": "2 pack regular", "image": "13.jpg" },
+    { "category": "personal", "sku": "PCR-2", "price": 2.00, "name": "Sorbent Tissues Carry Pack", "description": "10 4ply sheets", "image": "14.jpg" },
+    { "category": "personal", "sku": "PCR-3", "price": 5.00, "name": "Lucas Papaw Ointment 15g", "description": "A topical ointment to relieve and cleanse", "image": "15.jpg" },
+    { "category": "personal", "sku": "PCR-4", "price": 5.00, "name": "Lynx Africa Body Spray", "description": "Lynx's best selling body spray 30g", "image": "16.jpg" },
+    { "category": "personal", "sku": "PCR-5", "price": 3.00, "name": "Hair Essentials Kit", "description": "3x hair clips 3x bobby pins 3x hair ties", "image": "17.jpg" }
+]

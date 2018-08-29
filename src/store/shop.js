@@ -1,12 +1,9 @@
-import Vuex from 'vuex';
-import products from './products.js';
-
 const moduleShop = {
     state: {
       cartTotal: 0,
       cart: {},
       sale: false,
-      products,
+      products: [],
     },
     getters: {
       getCartCount: (state) => (name) => {
@@ -28,6 +25,9 @@ const moduleShop = {
         const modifiedItem = { ...item, count: modifiedCount };
         state.cart = { ...state.cart, [item.name]: modifiedItem };
         state.cartTotal++;
+      },
+      setProducts: (state, products) => {
+        state.products = products;
       }
     }
 };
