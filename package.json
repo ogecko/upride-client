@@ -8,6 +8,8 @@
   "private": true,
   "scripts": {
     "start": "quasar dev -t ios",
+    "build": "quasar build -t ios",
+    "serve": "quasar serve dist/spa-ios",
     "lint": "eslint --ext .js,.vue src",
     "test": "echo \"No test specified\" && exit 0"
   },

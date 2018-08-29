@@ -21,7 +21,7 @@
         />
         <q-route-tab
           label="Shop" icon="fas fa-home" slot="title"
-          to="/shop" exact
+          to="/shop/snacks" exact
         />
         <q-route-tab :count="cartTotal"
           label="Checkout" icon="fas fa-shopping-cart" slot="title"
