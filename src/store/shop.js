@@ -2,7 +2,6 @@ const moduleShop = {
     state: {
       cartTotal: 0,
       cart: {},
-      sale: false,
       products: [],
     },
     getters: {
@@ -11,16 +10,30 @@ const moduleShop = {
       },
     },
     mutations: {
-      switchSale: state => {
-        state.sale = !state.sale;
-      },
       clearCartCount: state => {
         state.cartTotal = 0;
       },
       clearCartContents: state => {
         state.cart = {};
       },
-      addItem: (state, item) => {
+      decItemFromCart: (state, item) => {
+        if (state.cart[item.name]) {
+          const modifiedCount = state.cart[item.name].count - 1;
+          const modifiedItem = { ...item, count: modifiedCount };
+          state.cart = { ...state.cart, [item.name]: modifiedItem };
+          if (modifiedCount == 0) delete state.cart[item.name];
+          state.cartTotal--;
+        }
+      },
+      clearItemFromCart: (state, item) => {
+        if (state.cart[item.name]) {
+          const count = state.cart[item.name].count;
+          state.cart = { ...state.cart };
+          delete state.cart[item.name];
+          state.cartTotal -= count ;
+        }
+      },
+      addItemToCart: (state, item) => {
         const modifiedCount = state.cart[item.name] ? state.cart[item.name].count + 1 : 1;
         const modifiedItem = { ...item, count: modifiedCount };
         state.cart = { ...state.cart, [item.name]: modifiedItem };
