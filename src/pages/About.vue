@@ -1,31 +1,22 @@
 <template>
-  <q-page padding class="row justify-center">
-    <div style="width: 500px; max-width: 90vw;">
-      <img alt="Quasar logo" style="width: 100%" src="../statics/1.jpg">
-      <p class="caption">
-        Based on the device you are using we have detected the following settings:
+  <q-page padding>
+    <div>
+      <h2 class="text-align-center text-weight-bold">Order Complete</h2>
+      <div class="q-my-md"><q-icon size="60px" name="fas fa-check-circle" /></div>
+      <p class="q-display-1">Thank You.</p>
+      <p class="q-title q-my-md">
+        Your driver will be notified and will hand your items over when safe to do so.
       </p>
-      <table class="q-table striped">
-        <thead>
-          <tr>
-            <th class="text-left">Property</th>
-            <th class="text-left">Value</th>
-          </tr>
-        </thead>
-
-        <tbody>
-          <tr><td>Up Ride version</td><td>1.0.1</td></tr>
-          <!-- <tr><td>Touch</td><td>{{ touch }}</td></tr>
-          <tr v-for="(value, prop) in $q.platform.is" :key="prop">
-            <td>{{ prop }}</td>
-            <td>{{ value }}</td>
-          </tr> -->
-        </tbody>
-      </table>
-
+      <p class="q-title q-my-xl">We hope we've Up'd your Ride.</p>
     </div>
   </q-page>
 </template>
+
+<style scoped>
+  div {
+    text-align: center;
+  }
+</style>
 
 <script>
 export default {

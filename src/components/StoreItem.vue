@@ -1,6 +1,6 @@
 <template>
   <div>
-        <img class="q-mt-lg"  :alt="item.name" style="width: 80%" :src="'statics/'+this.item.image">
+        <img class="q-mt-lg"  :alt="item.name" style="width: 70%" :src="'statics/'+this.item.image">
         <p class="text-weight-bold q-my-xs">{{ item.name }}</p>
         <p class="q-body-2 q-my-none">{{ item.description }}</p>
         <q-btn class="q-title">{{ item.price | aud }}</q-btn>

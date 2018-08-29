@@ -13,7 +13,7 @@
       </q-toolbar>
     </q-layout-header>
 
-  <q-layout-footer reveal>
+  <q-layout-footer>
       <q-tabs inverted>
         <q-route-tab
           label="Driver" icon="fas fa-taxi" slot="title"
