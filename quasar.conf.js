@@ -10,11 +10,11 @@ module.exports = function (ctx) {
       'app.styl'
     ],
     extras: [
-      ctx.theme.mat ? 'roboto-font' : null,
-      'material-icons' // optional, you are not bound to it
+      // ctx.theme.mat ? 'roboto-font' : null,
+      // 'material-icons' // optional, you are not bound to it
       // 'ionicons',
       // 'mdi',
-      // 'fontawesome'
+      'fontawesome'
     ],
     supportIE: false,
     build: {
@@ -24,14 +24,14 @@ module.exports = function (ctx) {
       // gzip: true,
       // analyze: true,
       // extractCSS: false,
-      extendWebpack (cfg) {
-        cfg.module.rules.push({
-          enforce: 'pre',
-          test: /\.(js|vue)$/,
-          loader: 'eslint-loader',
-          exclude: /(node_modules|quasar)/
-        })
-      }
+      // extendWebpack (cfg) {
+      //   cfg.module.rules.push({
+      //     enforce: 'pre',
+      //     test: /\.(js|vue)$/,
+      //     loader: 'eslint-loader',
+      //     exclude: /(node_modules|quasar)/
+      //   })
+      // }
     },
     devServer: {
       // https: true,
@@ -41,20 +41,23 @@ module.exports = function (ctx) {
     // framework: 'all' --- includes everything; for dev only!
     framework: {
       components: [
-        'QLayout',
-        'QLayoutHeader',
-        'QLayoutDrawer',
-        'QPageContainer',
-        'QPage',
-        'QToolbar',
-        'QToolbarTitle',
         'QBtn',
+        'QBtnGroup',
         'QIcon',
-        'QList',
-        'QListHeader',
         'QItem',
         'QItemMain',
-        'QItemSide'
+        'QItemSide',
+        'QList',
+        'QListHeader',
+        'QLayout',
+        'QLayoutHeader',
+        'QLayoutFooter',
+        'QPageContainer',
+        'QPage',
+        'QRouteTab',
+        'QTabs',
+        'QToolbar',
+        'QToolbarTitle',
       ],
       directives: [
         'Ripple'

@@ -1,0 +1,54 @@
+<template>
+  <q-page padding>
+      <h3 class="text-align-center text-weight-bold q-my-xs">In Car Menu</h3>
+      <div class="row justify-center">
+        <q-btn class='col-5 q-ma-xs' color='secondary' label='Snacks &amp; Drinks' @click='$router.push("/menu/snacks")'/>
+        <q-btn class='col-5 q-ma-xs' color='secondary' label='Free Samples' @click='$router.push("/menu/samples")'/>
+        <q-btn class='col-5 q-ma-xs' color='secondary' label='Electronics' @click='$router.push("/menu/electronics")'/>
+        <q-btn class='col-5 q-ma-xs' color='secondary' label='Personal Care' @click='$router.push("/menu/personal")'/>
+      </div>
+      <p class="text-align-center q-body-2 q-mt-md">
+        UpRide is the most convenient way to recharge and refresh while in your rideshare vehicle. 
+        Simply purchase what you desire below, and your driver will hand it to you when safe to do so.
+      </p>
+      <p class="text-align-center">
+        Your Driver: [name]
+      </p>
+        <StoreItem
+          v-for="(item, index) in products"
+          :key="index"
+          :item="item"
+          :index="index"
+        />
+  </q-page>
+</template>
+
+<style scoped>
+  .text-align-center {
+    text-align: center;
+  }
+</style>
+
+<script>
+import StoreItem from '../components/StoreItem.vue';
+export default {
+  components: {
+    StoreItem,
+  },
+  name: 'PageHome',
+  props: {
+    category: { type: 'string' },
+  },
+  computed: {
+    products() {
+      if (this.$route.params.category) {
+        return this.$store.state.products.filter(item => item.category == this.$route.params.category);
+      } else {
+        return this.$store.state.products
+      }
+    },
+  },
+  methods: {
+  },
+}
+</script>
