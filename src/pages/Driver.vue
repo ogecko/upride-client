@@ -4,7 +4,7 @@
       <h1 class="q-my-md">Welcome!</h1>
       <big>Please enter your drivers code to see the menu.</big>
     </div>
-    <FieldKeypad message='Where do I find the code?' @input="newDriver"/>
+    <FieldKeypad labelMsg='Where do I find the code?' @input="newDriver"/>
   </q-page>
 </template>
 
@@ -30,11 +30,15 @@ export default {
   },
   methods: {
     newDriver(code) {
+      if (! /\d{4}/.test(code)) {
+        this.$q.notify({ message: 'Please enter a 4 digit code'});
+        return;
+      }
       console.log(`New driver: '${code}'`);
       this.$axios.get('statics/products.json', { responseType: 'json' })
         .then(response => this.$store.commit('setProducts', response.data))
         .then(() => this.$router.push('/shop/snacks') )
-        .catch( () => this.$q.notify({ color: 'negative', position: 'top', message: 'Invalid Driver Code', icon: 'fas fa-exclamation-triangle' }) );
+        .catch(() => this.$q.notify({ message: 'Invalid Driver Code' }) );
     }
   }
 }
