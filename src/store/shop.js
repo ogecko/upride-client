@@ -17,10 +17,8 @@ const moduleShop = {
       }
     },
     mutations: {
-      clearCartCount: state => {
-        state.cartTotal = 0;
-      },
       clearCartContents: state => {
+        state.cartTotal = 0;
         state.cart = {};
       },
       decItemFromCart: (state, item) => {

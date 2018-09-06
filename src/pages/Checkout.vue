@@ -11,7 +11,7 @@
               <div class="col-3  text-right">{{amount | aud}}</div>
               <div class="col-1"></div>
             </div>
-            
+            <PaymentStripe :amount="amount"/>
   </q-page>
 </template>
 
@@ -25,9 +25,10 @@
 <script>
 import CartItem from '../components/CartItem.vue';
 import CartTip from '../components/CartTip.vue';
+import PaymentStripe from '../components/PaymentStripe.vue';
 export default {
   components: {
-    CartItem, CartTip
+    CartItem, CartTip, PaymentStripe,
   },
   name: 'PageCart',
   computed: {

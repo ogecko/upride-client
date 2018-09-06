@@ -14,7 +14,8 @@
     "test": "echo \"No test specified\" && exit 0"
   },
   "dependencies": {
-    "axios": "^0.18.0"
+    "axios": "^0.18.0",
+    "vue-stripe-elements-plus": "^0.2.8"
   },
   "devDependencies": {
     "babel-eslint": "^8.2.1",
@@ -27,7 +28,7 @@
     "eslint-plugin-promise": "^3.7.0",
     "eslint-plugin-standard": "^3.0.1",
     "eslint-plugin-vue": "^4.3.0",
-    "quasar-cli": "^0.17.0",
+    "quasar-cli": "^0.17.15",
     "strip-ansi": "=3.0.1"
   },
   "engines": {
