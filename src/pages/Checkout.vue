@@ -1,14 +1,14 @@
 <template>
   <q-page padding>
     <h3 class="text-align-center text-weight-bold q-my-xs">Checkout</h3>
-            <div v-for="item in cart" :key="item.name" class="row q-my-xs">
-              <div class="col-1">{{item.count}}&nbsp;x</div>
-              <div class="col-8">{{item.name}}</div>
-              <div class="col-3 text-right">{{item.price | aud}}</div>
-            </div>
+            <CartItem 
+              v-for="item in cart" 
+              :item="item" :key="item.name"
+            />
             <div class="row q-my-xs text-weight-bold">
-              <div class="col-9  text-right">Total Due:</div>
+              <div class="col-8  text-right">Total Due:</div>
               <div class="col-3  text-right">{{amount | aud}}</div>
+              <div class="col-1"></div>
             </div>
             
   </q-page>
@@ -22,7 +22,11 @@
 </style>
 
 <script>
+import CartItem from '../components/CartItem.vue';
 export default {
+  components: {
+    CartItem,
+  },
   name: 'PageCart',
   computed: {
     cart() {
