@@ -1,7 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 
-import example from './module-example'
 import shop from './shop.js'
 import driver from './driver.js'
 
