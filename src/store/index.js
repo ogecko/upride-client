@@ -3,6 +3,7 @@ import Vuex from 'vuex'
 
 import example from './module-example'
 import shop from './shop.js'
+import driver from './driver.js'
 
 Vue.use(Vuex)
 
@@ -15,7 +16,7 @@ export default function (/* { ssrContext } */) {
   const Store = new Vuex.Store({
     ...shop,
     modules: {
-      example,
+      driver,
     }
   })
 

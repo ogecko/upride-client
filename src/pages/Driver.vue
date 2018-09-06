@@ -16,6 +16,7 @@
 
 <script>
 import FieldKeypad from '../components/FieldKeypad.vue'
+import driverData from '../data/drivers.js'
 
 export default {
   name: 'PageDriver',
@@ -30,11 +31,19 @@ export default {
   },
   methods: {
     newDriver(code) {
+      /* check for a 4 digit code */
       if (! /\d{4}/.test(code)) {
         this.$q.notify({ message: 'Please enter a 4 digit code'});
         return;
       }
-      console.log(`New driver: '${code}'`);
+      /* check for a valid driver code */
+      if (!driverData[code]) {
+        this.$q.notify({ message: 'Please check code with the driver'});
+        return;
+      }
+      this.$store.commit('setDriver', { code, name: driverData[code].name });
+
+      console.log(`New driver: '${code}', '${driverData[code].driverName}'`);
       this.$axios.get('statics/products.json', { responseType: 'json' })
         .then(response => this.$store.commit('setProducts', response.data))
         .then(() => this.$router.push('/shop/snacks') )

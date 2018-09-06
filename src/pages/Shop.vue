@@ -25,7 +25,7 @@
         Simply purchase what you desire below, and your driver will hand it to you when safe to do so.
       </p>
       <p class="text-align-center">
-        Your Driver: [name]
+        Your Driver: {{$store.state.driver.name}}
       </p>
         <StoreItem
           v-for="(item, index) in products"
