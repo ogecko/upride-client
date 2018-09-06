@@ -1,8 +1,8 @@
 <template>
   <q-page padding>
     <div>
-      <h1 class="q-my-md">Welcome!</h1>
-      <big>Please enter your drivers code to see the menu.</big>
+      <h2 class="text-align-center text-weight-bold q-my-xs">Welcome!</h2>
+      <p class="q-mb-xl">Please enter your drivers code to see the menu.</p>
     </div>
     <FieldKeypad labelMsg='Where do I find the code?' @input="newDriver"/>
   </q-page>

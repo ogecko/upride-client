@@ -6,8 +6,9 @@
     <q-btn class='q-mx-xs text-weight-bold keypad-key' outline  size="lg" :label='code[2]' @click='setIndex(2)'/>
     <q-btn class='q-mx-xs text-weight-bold keypad-key' outline  size="lg" :label='code[3]' @click='setIndex(3)'/>
     </div>
-    <p class="q-mt-lg">{{labelMsg}}</p>
-    <p class="text-negative q-mt-lg">{{errorMsg}}</p>
+    <div class="q-mb-lg">
+      <small >{{labelMsg}}</small>
+    </div>
     <div class="gutter-xs">
     <div class="row justify-center">
         <q-btn class='q-mx-xs keypad-key' color='secondary' size="lg" label='7' @click='setCode(7)'/>
@@ -45,7 +46,6 @@ export default {
   props: {
     value: { type: String, default: '    ' },
     labelMsg: { type: String, default: '' },
-    errorMsg: { type: String, default: '' },
   },
   data() {
     return {
