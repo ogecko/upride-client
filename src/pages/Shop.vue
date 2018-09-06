@@ -1,24 +1,7 @@
 <template>
   <q-page padding>
       <h3 class="text-align-center text-weight-bold q-my-xs">In Car Menu</h3>
-      <q-tabs color="secondary"  two-lines>
-        <q-route-tab
-          label="Snacks &amp; Drinks" slot="title"
-          to="/shop/snacks" exact
-        />
-        <q-route-tab
-          label="Free Samples" slot="title"
-          to="/shop/samples" exact
-        />
-        <q-route-tab
-          label="Electronic Goods" slot="title"
-          to="/shop/electronics" exact
-        />
-        <q-route-tab
-          label="Personal Care" slot="title"
-          to="/shop/personal" exact
-        />
-      </q-tabs>
+      <StoreMenu />
 
       <p class="text-align-center q-body-2 q-mt-md">
         UpRide is the most convenient way to recharge and refresh while in your rideshare vehicle. 
@@ -59,9 +42,10 @@
 
 
 import StoreItem from '../components/StoreItem.vue';
+import StoreMenu from '../components/StoreMenu.vue';
 export default {
   components: {
-    StoreItem,
+    StoreItem, StoreMenu,
   },
   name: 'PageHome',
   props: {
