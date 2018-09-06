@@ -1,6 +1,6 @@
 <template>
   <div class="row q-my-xs items-center">
-    <div class="col-1">{{item.count}}&nbsp;x</div>
+    <div class="col-1">{{item.count}}<template v-if="item.count<10">&nbsp;</template>x</div>
     <div class="col-7 ">{{item.name}}</div>
     <div class="col-3 text-right">{{item.price | aud}}</div>
     <div class="col-1 text-center"><q-btn size='sm' @click="clr()" icon="fas fa-trash" flat round/></div>

@@ -1,6 +1,7 @@
 <template>
   <q-page padding>
     <h3 class="text-align-center text-weight-bold q-my-xs">Checkout</h3>
+            <CartTip />
             <CartItem 
               v-for="item in cart" 
               :item="item" :key="item.name"
@@ -23,9 +24,10 @@
 
 <script>
 import CartItem from '../components/CartItem.vue';
+import CartTip from '../components/CartTip.vue';
 export default {
   components: {
-    CartItem,
+    CartItem, CartTip
   },
   name: 'PageCart',
   computed: {

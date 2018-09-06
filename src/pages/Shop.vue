@@ -27,12 +27,17 @@
       <p class="text-align-center">
         Your Driver: {{$store.state.driver.name}}
       </p>
-        <StoreItem
-          v-for="(item, index) in products"
-          :key="index"
-          :item="item"
-          :index="index"
-        />
+      <div class="row">
+          <div class="col-12 q-pt-sm bg-black">
+          </div>
+      </div>
+
+      <StoreItem
+        v-for="(item, index) in products"
+        :key="index"
+        :item="item"
+        :index="index"
+      />
   </q-page>
 </template>
 
