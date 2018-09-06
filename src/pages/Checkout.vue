@@ -1,10 +1,16 @@
 <template>
   <q-page padding>
     <h3 class="text-align-center text-weight-bold q-my-xs">Checkout</h3>
-            <div v-for="item in cart" :key="item.name">
-              {{item.count}} x {{item.price | aud}} {{item.name}}
+            <div v-for="item in cart" :key="item.name" class="row q-my-xs">
+              <div class="col-1">{{item.count}}&nbsp;x</div>
+              <div class="col-8">{{item.name}}</div>
+              <div class="col-3 text-right">{{item.price | aud}}</div>
             </div>
-            {{amount | aud}}
+            <div class="row q-my-xs text-weight-bold">
+              <div class="col-9  text-right">Total Due:</div>
+              <div class="col-3  text-right">{{amount | aud}}</div>
+            </div>
+            
   </q-page>
 </template>
 
