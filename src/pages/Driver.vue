@@ -41,9 +41,9 @@ export default {
         this.$q.notify({ message: 'Please check code with the driver'});
         return;
       }
+      console.log(`New driver: '${code}', '${driverData[code].name}'`);
       this.$store.commit('setDriver', { code, name: driverData[code].name });
 
-      console.log(`New driver: '${code}', '${driverData[code].driverName}'`);
       this.$axios.get('statics/products.json', { responseType: 'json' })
         .then(response => this.$store.commit('setProducts', response.data))
         .then(() => this.$router.push('/shop/snacks') )

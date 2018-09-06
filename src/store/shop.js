@@ -1,3 +1,4 @@
+
 const moduleShop = {
     state: {
       cartTotal: 0,
@@ -5,9 +6,15 @@ const moduleShop = {
       products: [],
     },
     getters: {
-      getCartCount: (state) => (name) => {
+      getCartItemCount: (state) => (name) => {
         return state.cart[name] ? state.cart[name].count : 0;
       },
+      getCartAmount: (state) => () => {
+          const amount = Object.keys(state.cart).reduce(
+          (acc, name) => acc + state.cart[name].count * state.cart[name].price,
+          0);
+          return amount;
+      }
     },
     mutations: {
       clearCartCount: state => {

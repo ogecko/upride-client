@@ -4,6 +4,7 @@
             <div v-for="item in cart" :key="item.name">
               {{item.count}} x {{item.price | aud}} {{item.name}}
             </div>
+            {{amount | aud}}
   </q-page>
 </template>
 
@@ -20,6 +21,9 @@ export default {
   computed: {
     cart() {
       return this.$store.state.cart;
+    },
+    amount() {
+      return this.$store.getters.getCartAmount();
     },
   },
   filters: {
