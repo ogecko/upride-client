@@ -38,6 +38,18 @@ export default {
       return this.$store.getters.getCartAmount();
     },
   },
+  beforeMount() {
+    if (this.$store.state.products.length==0) {
+      this.$q.notify({ message: 'Please choose a driver code first'});
+      this.$router.push('/driver')
+      return;
+    }
+    if (Object.keys(this.$store.state.cart).length==0) {
+      this.$q.notify({ type: 'info', message: 'Your cart is currently empty', icon: 'fas fa-info-circle',});
+      this.$router.push('/shop/snacks')
+      return;
+    }
+  },
   filters: {
     aud(x) {
       return new Intl.NumberFormat('en-AU', { style: 'currency', currency: 'AUD' }).format(x);

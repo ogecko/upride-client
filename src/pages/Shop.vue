@@ -2,7 +2,6 @@
   <q-page padding>
       <h3 class="text-align-center text-weight-bold q-my-xs">In Car Menu</h3>
       <StoreMenu />
-
       <p class="text-align-center q-body-2 q-mt-md">
         UpRide is the most convenient way to recharge and refresh while in your rideshare vehicle. 
         Simply purchase what you desire below, and your driver will hand it to you when safe to do so.
@@ -10,11 +9,8 @@
       <p class="text-align-center">
         Your Driver: {{$store.state.driver.name}}
       </p>
-      <div class="row">
-          <div class="col-12 q-pt-sm bg-black">
-          </div>
+      <div class="row"><div class="col-12 q-pt-sm bg-black"></div>
       </div>
-
       <StoreItem
         v-for="(item, index) in products"
         :key="index"
@@ -50,6 +46,12 @@ export default {
   name: 'PageHome',
   props: {
     category: { type: 'string' },
+  },
+  beforeMount() {
+    if (this.$store.state.products==0) {
+      this.$q.notify({ message: 'Please choose a driver code first'});
+      this.$router.push('/driver')
+    }
   },
   computed: {
     products() {

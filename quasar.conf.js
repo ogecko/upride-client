@@ -68,7 +68,8 @@ module.exports = function (ctx) {
       ],
       config: {
         notify: {
-          icon: 'fas fa-exclamation-triangle'
+          icon: 'fas fa-exclamation-triangle',
+          position: 'top',
         }
       }
       // iconSet: ctx.theme.mat ? 'material-icons' : 'ionicons'
