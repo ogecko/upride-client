@@ -35,7 +35,7 @@
     </q-layout-footer>
 
       <q-page-container>
-        <router-view />
+          <router-view class="animate-fade"/>
       </q-page-container>
     </q-layout>
   </template>
