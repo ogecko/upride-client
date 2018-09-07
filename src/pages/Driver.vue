@@ -42,7 +42,7 @@ export default {
         return;
       }
       console.log(`New driver: '${code}', '${driverData[code].name}'`);
-      this.$store.commit('setDriver', { code, name: driverData[code].name });
+      this.$store.commit('setDriver', { code, ...driverData[code] });
 
       this.$axios.get('statics/products.json', { responseType: 'json' })
         .then(response => this.$store.commit('setProducts', response.data))
