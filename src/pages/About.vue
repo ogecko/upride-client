@@ -17,7 +17,7 @@
       </p>
       <div class="row q-my-md justify-center items-center">
         <div class="col-4">UpRide Version</div>
-        <div class="col-3">1.0.1</div>
+        <div class="col-3">{{ version }}</div>
       </div>
       <div class="row q-my-md justify-center items-center">
         <div class="col-4">Number of Products</div>
@@ -39,11 +39,16 @@
 </style>
 
 <script>
+import settings from '../../package.json'
 export default {
   computed: {
     isPaymentComplete() {
       return !!this.$store.state.cartToken.name;
+    },
+    version() {
+      return settings.version;      
     }
+
   }
 }
 </script>
