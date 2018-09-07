@@ -43,6 +43,8 @@ module.exports = function (ctx) {
       components: [
         'QBtn',
         'QBtnGroup',
+        'QField',
+        'QInput',
         'QIcon',
         'QItem',
         'QItemMain',
@@ -55,7 +57,6 @@ module.exports = function (ctx) {
         'QPageContainer',
         'QPage',
         'QRouteTab',
-        'QSpinnerBall',
         'QTabs',
         'QToolbar',
         'QToolbarTitle',

@@ -2,6 +2,7 @@
 const moduleShop = {
     state: {
       cartTotal: 0,
+      cartToken: {},
       cart: {},
       products: [],
     },
@@ -17,9 +18,10 @@ const moduleShop = {
       }
     },
     mutations: {
-      clearCartContents: state => {
+      clearCartContents: (state, token) => {
         state.cartTotal = 0;
         state.cart = {};
+        state.cartToken = { ...token };
       },
       decItemFromCart: (state, item) => {
         if (state.cart[item.name]) {
@@ -43,6 +45,7 @@ const moduleShop = {
         const modifiedItem = { ...item, count: modifiedCount };
         state.cart = { ...state.cart, [item.name]: modifiedItem };
         state.cartTotal++;
+        state.cartToken = {}; // reset the token whenever something is added
       },
       setProducts: (state, products) => {
         state.products = products;
