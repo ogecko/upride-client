@@ -1,6 +1,6 @@
 {
-  "name": "upride-client",
-  "version": "1.0.0",
+  "name": "UpRide",
+  "version": "1.0.4",
   "description": "Recharge and refresh while in your ride share vehicle",
   "productName": "UpRide",
   "cordovaId": "org.cordova.quasar.app",
@@ -9,6 +9,8 @@
   "scripts": {
     "start": "quasar dev -t ios",
     "build": "quasar build -t ios",
+    "pwab": "quasar build -t ios -m pwa",
+    "pwas": "cd dist/pwa-ios; quasar serve -m pwa",
     "serve": "quasar serve dist/spa-ios",
     "lint": "eslint --ext .js,.vue src",
     "test": "echo \"No test specified\" && exit 0"
