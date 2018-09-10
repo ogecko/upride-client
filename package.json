@@ -7,11 +7,13 @@
   "author": "David Morrison <jdmorriso@gmail.com>",
   "private": true,
   "scripts": {
-    "start": "quasar dev -t ios",
-    "build": "quasar build -t ios",
-    "pwab": "quasar build -t ios -m pwa",
-    "pwas": "cd dist/pwa-ios; quasar serve -m pwa",
-    "serve": "quasar serve dist/spa-ios",
+    "start": "quasar dev -t ios -m pwa",
+    "deploy": "npm run build:client; npm run build:image; npm run tag; npm run push",
+    "build:client": "quasar build -t ios -m pwa",
+    "build:image": "docker build -t upride .",
+    "tag": "docker tag upride:latest 438078403446.dkr.ecr.ap-southeast-2.amazonaws.com/upride:latest",
+    "push": "docker push 438078403446.dkr.ecr.ap-southeast-2.amazonaws.com/upride:latest",
+    "serve": "quasar serve -m pwa dist/pwa-ios",
     "lint": "eslint --ext .js,.vue src",
     "test": "echo \"No test specified\" && exit 0"
   },
