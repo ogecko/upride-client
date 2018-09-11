@@ -1,0 +1,11 @@
+{
+  appName: 'upride',
+  logDir: 'logs',
+  host: 'ubuntu',
+  port: 3030,
+  public: '../public/',
+  paginate: {
+    default: 10,
+    max: 50
+  }
+}
