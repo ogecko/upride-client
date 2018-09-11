@@ -9,7 +9,7 @@
             <div class="col-5 q-py-sm bg-black text-weight-bold text-black">
                 <q-btn-group>
                 <q-btn color="secondary" @click="dec()"><q-icon name="fas fa-minus" size="0.8rem"/></q-btn>
-                <q-btn class="bg-white" outline @click="clr()">{{count}}</q-btn>
+                <q-btn class="bg-white" outline @click="clr()">${{count}}</q-btn>
                 <q-btn color="secondary" @click="inc()"><q-icon name="fas fa-plus" size="0.8rem"/></q-btn>
                 </q-btn-group>        
             </div>
@@ -31,18 +31,18 @@ export default {
   },
   computed: {
     count() {
-      return this.$store.getters.getCartItemCount(this.item.name);
+      return this.$store.getters.getCartItemPrice(this.item.name);
     }
   },
   methods: {
     dec() {
-      this.$store.commit('decItemFromCart', this.item);
+      this.$store.commit('decItemPriceFromCart', this.item);
     },
     clr() {
       this.$store.commit('clearItemFromCart', this.item);
     },
     inc() {
-      this.$store.commit('addItemToCart', this.item);
+      this.$store.commit('addItemPriceToCart', this.item);
     },
   },
   filters: {

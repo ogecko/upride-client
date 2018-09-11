@@ -10,6 +10,9 @@ const moduleShop = {
       getCartItemCount: (state) => (name) => {
         return state.cart[name] ? state.cart[name].count : 0;
       },
+      getCartItemPrice: (state) => (name) => {
+        return state.cart[name] ? state.cart[name].price : 0;
+      },
       getCartAmount: (state) => () => {
           const amount = Object.keys(state.cart).reduce(
           (acc, name) => acc + state.cart[name].count * state.cart[name].price,
@@ -22,6 +25,17 @@ const moduleShop = {
         state.cartTotal = 0;
         state.cart = {};
         state.cartToken = { ...token };
+      },
+      decItemPriceFromCart: (state, item) => {
+        if (state.cart[item.name]) {
+          const modifiedPrice = state.cart[item.name].price - 1;
+          const modifiedItem = { ...item, count: 1, price: modifiedPrice };
+          state.cart = { ...state.cart, [item.name]: modifiedItem };
+          if (modifiedPrice == 0) {
+            delete state.cart[item.name];
+            state.cartTotal--;
+          }
+        }
       },
       decItemFromCart: (state, item) => {
         if (state.cart[item.name]) {
@@ -39,6 +53,13 @@ const moduleShop = {
           delete state.cart[item.name];
           state.cartTotal -= count ;
         }
+      },
+      addItemPriceToCart: (state, item) => {
+        const modifiedPrice = state.cart[item.name] ? state.cart[item.name].price + 1 : 1;
+        const modifiedItem = { ...item, count: 1, price: modifiedPrice };
+        state.cart = { ...state.cart, [item.name]: modifiedItem };
+        if (modifiedPrice == 1) state.cartTotal++;
+        state.cartToken = {}; // reset the token whenever something is added
       },
       addItemToCart: (state, item) => {
         const modifiedCount = state.cart[item.name] ? state.cart[item.name].count + 1 : 1;
