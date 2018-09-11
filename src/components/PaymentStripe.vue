@@ -3,23 +3,25 @@
     <q-input v-model="fields.name" stack-label="Name" :before="[{icon: 'fas fa-user', handler () {}}]" />
     <q-input v-model="fields.email" type="email" stack-label="Email" :before="[{icon: 'fas fa-envelope', handler () {}}]" />
     <q-input v-model="fields.mobile" type="number" stack-label="Mobile" :before="[{icon: 'fas fa-phone', handler () {}}]" />
-      <Card v-if="!isFree" class='stripecard q-mt-md'
+    <div v-if="!isFree" class="q-mt-sm q-ml-lg q-caption text-faded">Payment Details</div>
+      <Card v-if="!isFree" class='stripecard q-mt-none'
         :class='{ complete }'
         :stripe='stripeKey'
         :options='stripeOptions'
         @change='complete = $event.complete'
       />
+
     <div class="row">
       <div class="col-6">
       </div>
       <div class="col-6 row">
         <q-btn class="col-12 q-mt-md" :disabled="isDisabledPay" color="black" size="lg" @click="pay()">{{payBtnLabel}}</q-btn>
-        <div class="col-12 q-mt-xl text-grey text-center">Payment Options</div>
+        <div class="col-12 q-mt-xl text-secondary text-center">Payment Options</div>
         <div class="col-12 text-center">
-          <q-icon class="q-ml-xs" name="fab fa-cc-visa" color="grey" size="2rem"/>
-          <q-icon class="q-ml-xs" name="fab fa-cc-mastercard" color="grey" size="2rem"/>
-          <q-icon class="q-ml-xs" name="fab fa-cc-amex" color="grey" size="2rem"/>
-          <q-icon class="q-ml-xs" name="fab fa-cc-diners-club" color="grey" size="2rem"/>
+          <q-icon class="q-ml-xs" name="fab fa-cc-visa" color="secondary" size="2rem"/>
+          <q-icon class="q-ml-xs" name="fab fa-cc-mastercard" color="secondary" size="2rem"/>
+          <q-icon class="q-ml-xs" name="fab fa-cc-amex" color="secondary" size="2rem"/>
+          <q-icon class="q-ml-xs" name="fab fa-cc-diners-club" color="secondary" size="2rem"/>
         </div>
       </div>
     </div>
@@ -59,7 +61,7 @@ export default {
       return (this.isEmpty || !this.isFormComplete);
     },
     payBtnLabel() {
-      return this.isFree ? 'Purchase' : 'Pay Now'
+      return this.isFree ? 'Claim' : 'Pay Now'
     },
   },
   methods: {
