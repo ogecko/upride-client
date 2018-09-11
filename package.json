@@ -1,19 +1,19 @@
 {
   "name": "UpRide",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Recharge and refresh while in your ride share vehicle",
   "productName": "UpRide",
   "cordovaId": "org.cordova.quasar.app",
   "author": "David Morrison <jdmorriso@gmail.com>",
   "private": true,
   "scripts": {
-    "start": "quasar dev -t ios -m pwa",
+    "start": "quasar dev -t ios",
     "deploy": "npm run build:client; npm run build:image; npm run tag; npm run push",
-    "build:client": "quasar build -t ios -m pwa",
+    "build:client": "quasar build -t ios",
     "build:image": "docker build -t upride .",
     "tag": "docker tag upride:latest 438078403446.dkr.ecr.ap-southeast-2.amazonaws.com/upride:latest",
     "push": "docker push 438078403446.dkr.ecr.ap-southeast-2.amazonaws.com/upride:latest",
-    "serve": "quasar serve -m pwa dist/pwa-ios",
+    "serve": "quasar serve dist/pwa-ios",
     "lint": "eslint --ext .js,.vue src",
     "test": "echo \"No test specified\" && exit 0"
   },

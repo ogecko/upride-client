@@ -17,8 +17,8 @@ $(aws ecr get-login --no-include-email --region ap-southeast-2)
 ```
 Run the following commands to pull and run the container
 ```
+docker pull 438078403446.dkr.ecr.ap-southeast-2.amazonaws.com/upride:latest
 docker stop upride
 docker rm upride
-docker pull 438078403446.dkr.ecr.ap-southeast-2.amazonaws.com/upride:latest
 docker run -d --network="bridge" --expose 8080 --name upride 438078403446.dkr.ecr.ap-southeast-2.amazonaws.com/upride:latest
 ```

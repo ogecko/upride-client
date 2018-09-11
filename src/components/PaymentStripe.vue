@@ -30,7 +30,8 @@
 
 <script>
 
-import { Card, createToken } from 'vue-stripe-elements-plus'
+import { Card, createToken, baseStyle } from 'vue-stripe-elements-plus'
+delete baseStyle.base.lineHeight;       // to stop warning from stripe about not setting line-height
 
 export default {
   components: {
