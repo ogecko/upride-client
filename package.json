@@ -1,6 +1,6 @@
 {
   "name": "UpRide",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "Recharge and refresh while in your ride share vehicle",
   "productName": "UpRide",
   "cordovaId": "org.cordova.quasar.app",
