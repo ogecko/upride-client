@@ -28,10 +28,13 @@ app.use(cors());
 app.use(compress());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
+// Host the public folder (which Dockerfile copies from dist/pwa-ios)
 app.use(favicon(path.join(app.get('public'), 'statics/icons/favicon.ico')));
-// Host the public folder (which is a copy of dist/pwa-ios)
-app.use(morgan('dev', { stream: logger.stream }));
 app.use('/', express.static(app.get('public')));
+
+// Setup HTPP logging
+app.use(morgan('dev', { stream: logger.stream }));
 
 // Set up Plugins and providers
 app.configure(express.rest());

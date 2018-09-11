@@ -2,6 +2,8 @@ const { createLogger, format, transports } = require('winston');
 const DailyRotateFile = require('winston-daily-rotate-file');
 const config = require('config');
 
+const pid = format(info => { info.pid=process.pid; return info });
+
 // Configure the Winston logger. For the complete documentation see https://github.com/winstonjs/winston
 // define the custom settings for each transport (file, console)
 const options = {
@@ -13,7 +15,7 @@ const options = {
     maxFiles: '7d',
     handleExceptions: true,
     format: format.combine(
-      format.metadata(),
+      pid(),
       format.timestamp(),
       format.splat(),
       format.uncolorize(),
@@ -24,7 +26,6 @@ const options = {
     level: 'debug',
     handleExceptions: true,
     format: format.combine(
-      format.metadata(),
       format.timestamp({ format: 'DD-MMM-YY HH:mm:ss.SSS' }),
       format.splat(),
       format.colorize(),
@@ -42,6 +43,7 @@ const logger = createLogger({
   ],
   exitOnError: false, // do not exit on handled exceptions
 });
+
 
 // create a stream object with a 'write' function that will be used by `morgan` which logs all HTTP requests 
 logger.stream = {

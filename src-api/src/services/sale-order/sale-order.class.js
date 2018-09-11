@@ -5,7 +5,7 @@ class Service {
   }
 
   async find (params) {
-    return [1.0/0.0];
+    return [];
   }
 
   async get (id, params) {

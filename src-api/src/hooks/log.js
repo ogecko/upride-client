@@ -5,7 +5,7 @@ const log = require('../logger');
 const util = require('util');
 
 // To see more detailed messages, uncomment the following line:
-log.level = 'debug';
+// log.level = 'debug';
 
 module.exports = function () {
   return context => {
@@ -14,7 +14,7 @@ module.exports = function () {
     log.debug(`[${context.path}] ${context.method.toUpperCase()} ${context.type}`);
     
     if(typeof context.toJSON === 'function' && log.level === 'debug') {
-      log.debug('Hook Context', util.inspect(context, { colors: true }));
+      log.debug('Hook Context %s', util.inspect(context, { colors: true }));
     }
     
     if(context.error) {
