@@ -1,6 +1,5 @@
 <template>
   <q-page padding>
-      <h3 class="text-align-center text-weight-bold q-my-xs">In Car Menu</h3>
       <StoreMenu />
       <p class="text-align-center q-body-2 q-mt-md">
         UpRide is the most convenient way to recharge and refresh while in your rideshare vehicle. 
