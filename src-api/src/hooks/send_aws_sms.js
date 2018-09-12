@@ -7,8 +7,8 @@ const _ = require('lodash');
 // returns a hook function that sends an SMS
 module.exports = function (opts={}) {
     const { 
-        mobile=undefined,           // context path to the message to send
-        message=undefined,          // context path to the mobile number to SMS to
+        message=undefined,          // context path to the message to send
+        mobile=undefined,           // context path to the mobile number to SMS to
         sender='NOTICE',            // fixed senderID of SMS message
         region='ap-southeast-2', 
         prefix='+61',
