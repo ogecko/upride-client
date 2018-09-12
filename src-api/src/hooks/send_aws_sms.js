@@ -11,7 +11,7 @@ module.exports = function (opts={}) {
     } = opts;
     return context => {
 
-         log.info(util.inspect(context));
+         log.info(util.inspect(context.data));
 
         // // Set region
         // AWS.config.update({ region });

@@ -43,7 +43,7 @@ import settings from '../../package.json'
 export default {
   computed: {
     isPaymentComplete() {
-      return !!this.$store.state.cartToken.name;
+      return !!this.$store.state.saleOrder.buyer;
     },
     version() {
       return settings.version;      

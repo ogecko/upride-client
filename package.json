@@ -18,6 +18,8 @@
     "test": "echo \"No test specified\" && exit 0"
   },
   "dependencies": {
+    "@feathersjs/feathers": "^3.2.1",
+    "@feathersjs/rest-client": "^1.4.3",
     "axios": "^0.18.0",
     "morgan": "^1.9.1",
     "vue-stripe-elements-plus": "^0.2.8"

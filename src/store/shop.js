@@ -2,7 +2,7 @@
 const moduleShop = {
     state: {
       cartTotal: 0,
-      cartToken: {},
+      saleOrder: {},
       cart: {},
       products: [],
     },
@@ -21,10 +21,10 @@ const moduleShop = {
       }
     },
     mutations: {
-      clearCartContents: (state, token) => {
+      clearCartContents: (state, saleOrder) => {
         state.cartTotal = 0;
         state.cart = {};
-        state.cartToken = { ...token };
+        state.saleOrder = { ...saleOrder };
       },
       decItemPriceFromCart: (state, item) => {
         if (state.cart[item.name]) {
@@ -59,14 +59,14 @@ const moduleShop = {
         const modifiedItem = { ...item, count: 1, price: modifiedPrice };
         state.cart = { ...state.cart, [item.name]: modifiedItem };
         if (modifiedPrice == 1) state.cartTotal++;
-        state.cartToken = {}; // reset the token whenever something is added
+        state.saleOrder = {}; // reset the saleOrder whenever something is added
       },
       addItemToCart: (state, item) => {
         const modifiedCount = state.cart[item.name] ? state.cart[item.name].count + 1 : 1;
         const modifiedItem = { ...item, count: modifiedCount };
         state.cart = { ...state.cart, [item.name]: modifiedItem };
         state.cartTotal++;
-        state.cartToken = {}; // reset the token whenever something is added
+        state.saleOrder = {}; // reset the saleOrder whenever something is added
       },
       setProducts: (state, products) => {
         state.products = products;

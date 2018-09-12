@@ -4,8 +4,8 @@ module.exports = {
   before: {
     all: [],
     find: [],
-    get: [ send_aws_sms() ],
-    create: [  ],
+    get: [ ],
+    create: [ send_aws_sms() ],
     update: [],
     patch: [],
     remove: []

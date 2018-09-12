@@ -5,6 +5,7 @@ module.exports = function (ctx) {
     // app plugins (/src/plugins)
     plugins: [
       'axios',
+      'feathers',
     ],
     css: [
       'app.styl'
@@ -24,19 +25,31 @@ module.exports = function (ctx) {
       // gzip: true,
       // analyze: true,
       // extractCSS: false,
-      // extendWebpack (cfg) {
-      //   cfg.module.rules.push({
-      //     enforce: 'pre',
-      //     test: /\.(js|vue)$/,
-      //     loader: 'eslint-loader',
-      //     exclude: /(node_modules|quasar)/
-      //   })
-      // }
+      extendWebpack (cfg) {
+        // console.log(JSON.stringify(cfg,undefined,2));
+        cfg.module.rules.push({
+            test: /\.jsx?$/,
+            exclude: /node_modules(\/|\\)(?!(@feathersjs))/,
+            loader: 'babel-loader'
+        });
+        // cfg.module.rules.push({
+        //   enforce: 'pre',
+        //   test: /\.(js|vue)$/,
+        //   loader: 'eslint-loader',
+        //   exclude: /(node_modules|quasar)/
+        // })
+      }
     },
     devServer: {
       // https: true,
       // port: 8080,
       open: true // opens browser window automatically
+      proxy: {   // api server used when in Quasar dev mode
+        '/api': {
+          target: 'http://192.168.1.6:3030',    
+          changeOrigin: true,
+        }
+      },
     },
     // framework: 'all' --- includes everything; for dev only!
     framework: {

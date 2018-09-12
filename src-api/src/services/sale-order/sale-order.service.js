@@ -11,10 +11,10 @@ module.exports = function (app) {
   };
 
   // Initialize our service with any options it requires
-  app.use('/sale-order', createService(options));
+  app.use('/api/sale-order', createService(options));
 
   // Get our initialized service so that we can register hooks
-  const service = app.service('sale-order');
+  const service = app.service('/api/sale-order');
 
   service.hooks(hooks);
 };

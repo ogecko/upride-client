@@ -2,7 +2,7 @@
   <div class="q-mt-lg">
     <q-input v-model="fields.name" stack-label="Name" :before="[{icon: 'fas fa-user', handler () {}}]" />
     <q-input v-model="fields.email" type="email" stack-label="Email" :before="[{icon: 'fas fa-envelope', handler () {}}]" />
-    <q-input v-model="fields.mobile" type="number" stack-label="Mobile" :before="[{icon: 'fas fa-phone', handler () {}}]" />
+    <q-input v-model="fields.mobile" type="tel" stack-label="Mobile" :before="[{icon: 'fas fa-phone', handler () {}}]" />
     <div v-if="!isFree" class="q-mt-sm q-ml-lg q-caption text-faded">Payment Details</div>
       <Card v-if="!isFree" class='stripecard q-mt-none'
         :class='{ complete }'
@@ -15,7 +15,7 @@
       <div class="col-6">
       </div>
       <div class="col-6 row">
-        <q-btn class="col-12 q-mt-md" :disabled="isDisabledPay" color="black" size="lg" @click="pay()">{{payBtnLabel}}</q-btn>
+        <q-btn class="col-12 q-mt-md" :disabled="isDisabledPay" color="black" size="lg" @click="payNow()">{{payBtnLabel}}</q-btn>
         <div class="col-12 q-mt-xl text-secondary text-center">Payment Options</div>
         <div class="col-12 text-center">
           <q-icon class="q-ml-xs" name="fab fa-cc-visa" color="secondary" size="2rem"/>
@@ -66,22 +66,35 @@ export default {
     },
   },
   methods: {
-    pay() {
-      console.log('pay')
-      const self = this;
+    payNow() {
+      console.log('Pay Now')
       if (this.isFree) {
-        self.$store.commit('clearCartContents', { ...self.fields });
-        self.$router.push('/about');
+        this.processSaleOrder();
       } else {
-        createToken().then(data => {
-          if (data.token) {
-            self.$store.commit('clearCartContents', { ...data.token, ...self.fields });
-            self.$router.push('/about');
-          } else {
-            console.log('Stripe Error Returned', data.error);
-          }
-        })
+        createToken().then(data => data.token ?
+          this.processSaleOrder(data.token)
+          : console.log('Stripe Error Returned', data.error)
+        );
       }
+    },
+    processSaleOrder(token={ card: {} }) {
+      const saleOrder = {
+        totalAmount: this.$store.getters.getCartAmount(),
+        cart: { ...this.$store.state.cart },     // { item1, item2, ... } where item = { name, description, category, sku, count, price }
+        seller: { ...this.$store.state.driver }, // name, email, mobile, code
+        buyer: { ...this.fields },               // name, email, mobile
+        token: { 
+          token_id: token.id,
+          card_id: token.card.id,
+          card_last4: token.card.last4, 
+          client_ip: token.client_ip,
+          livemode: token.livemode,               // true / false
+          used: token.used,                       // true / false
+        }
+      };
+      this.$api.service('/api/sale-order').create(saleOrder);
+      this.$store.commit('clearCartContents', saleOrder);
+      this.$router.push('/about');
     }
   }
 };
