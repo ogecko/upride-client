@@ -8,7 +8,7 @@ module.exports = {
     get: [ ],
     create: [ 
       format_upride_sms_message(),
-      send_aws_sms({ phone: 'data.seller.mobile', message: 'data.message' }) 
+      send_aws_sms({ sender: 'UpRide', mobile: 'data.seller.mobile', message: 'data.message' }) 
     ],
     update: [],
     patch: [],
