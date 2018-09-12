@@ -1,3 +1,4 @@
+const format_upride_sms_message=require('../../hooks/format_upride_sms_message');
 const send_aws_sms=require('../../hooks/send_aws_sms');
 
 module.exports = {
@@ -5,7 +6,10 @@ module.exports = {
     all: [],
     find: [],
     get: [ ],
-    create: [ send_aws_sms() ],
+    create: [ 
+      format_upride_sms_message(),
+      send_aws_sms({ phone: 'data.seller.mobile', message: 'data.message' }) 
+    ],
     update: [],
     patch: [],
     remove: []
