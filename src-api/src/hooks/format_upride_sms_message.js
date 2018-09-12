@@ -2,7 +2,7 @@ const log = require('../logger');
 const _ = require('lodash');
 
 function aud(x) {
-    return '$' + new Intl.NumberFormat('en-AU', { style: 'decimal', minimumFractionDigits: 2 }).format(x);
+    return '$' + new Intl.NumberFormat('en-AU', { style: 'decimal', minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(x);
 }
 
 // returns a hook function that sends an SMS
