@@ -1,11 +1,11 @@
-
+const send_aws_sms=require('../../hooks/send_aws_sms');
 
 module.exports = {
   before: {
     all: [],
     find: [],
-    get: [],
-    create: [],
+    get: [ send_aws_sms() ],
+    create: [  ],
     update: [],
     patch: [],
     remove: []
