@@ -5,7 +5,7 @@ function aud(x) {
     return '$' + new Intl.NumberFormat('en-AU', { style: 'decimal', minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(x);
 }
 
-// returns a hook function that sends an SMS
+// returns a hook function that sets the context.data.message property to a summary of the sales order (can be used for an SMS)
 module.exports = function (opts={}) {
     return context => {
         const f = { 
