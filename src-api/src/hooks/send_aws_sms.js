@@ -5,6 +5,7 @@ const util = require('util');
 const _ = require('lodash');
 
 // returns a hook function that sends an SMS
+// need to ensure EC2 instance has smsPublishingRole (under SNS)
 module.exports = function (opts={}) {
     const { 
         message=undefined,          // context path to the message to send
