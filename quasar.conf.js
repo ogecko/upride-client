@@ -43,7 +43,7 @@ module.exports = function (ctx) {
     devServer: {
       // https: true,
       // port: 8080,
-      open: true // opens browser window automatically
+      open: true, // opens browser window automatically
       proxy: {   // api server used when in Quasar dev mode
         '/api': {
           target: 'http://192.168.1.6:3030',    
