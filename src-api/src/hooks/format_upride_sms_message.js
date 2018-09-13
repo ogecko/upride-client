@@ -22,9 +22,9 @@ module.exports = function (opts={}) {
                             [])
                         .sortBy()
                         .value()
-                        .join(', ')
+                        .join('\n')
         }
-        context.data.message = `Hi ${f.seller.name}, ${f.buyer.name} just paid ${aud(f.totalAmount)} for ${f.products}. Thanks.`;
+        context.data.message = `Hi ${f.seller.name},\n${f.buyer.name} ordered:\n\n${f.products}\n\nPlease hand over the products when safe to do so.\nThanks.`;
     };
 };
   

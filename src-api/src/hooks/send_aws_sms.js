@@ -13,6 +13,7 @@ module.exports = function (opts={}) {
         sender='NOTICE',            // fixed senderID of SMS message
         region='ap-southeast-2', 
         prefix='+61',
+        live_mode=true,
     } = opts;
     return context => {
         // Create publish parameters
@@ -25,17 +26,19 @@ module.exports = function (opts={}) {
         // add the country prefix if it isnt present
         if (params.PhoneNumber.slice(0,1) != '+') params.PhoneNumber = prefix + params.PhoneNumber;
         
-        log.info(util.inspect(params));
+        log.info(`Sent SMS from ${sender} to ${params.PhoneNumber} containing ${params.Message}`);
 
-        // Set region
-        AWS.config.update({ region });
+        if (live_mode) {
+            // Set region
+            AWS.config.update({ region });
 
-        // Create promise and SNS service object
-        const SNSservice = new AWS.SNS({apiVersion: '2010-03-31'});
-        SNSservice.setSMSAttributes({ attributes: { DefaultSenderID: sender } }).promise()
-        .then(data => SNSservice.publish(params).promise())
-        .then(data => log.info(`SMS MessageID is ${data.MessageId}`))
-        .catch(err => log.error(err.stack));
+            // Create promise and SNS service object
+            const SNSservice = new AWS.SNS({apiVersion: '2010-03-31'});
+            SNSservice.setSMSAttributes({ attributes: { DefaultSenderID: sender } }).promise()
+            .then(data => SNSservice.publish(params).promise())
+            .then(data => log.info(`SMS MessageID is ${data.MessageId}`))
+            .catch(err => log.error(err.stack));
+        }
     };
 };
   

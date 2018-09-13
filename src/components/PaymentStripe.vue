@@ -42,7 +42,7 @@ export default {
   },
   data() {
     return {
-      stripeKey: 'pk_test_TYooMQauvdEDq54NiTphI7jx',
+      stripeKey: 'pk_test_67i5pziUdWAnHpRUS2zq7QhX',
       stripeOptions: { },
       complete: false,    // marks whether the CC is complete (ie fully filled out)
       fields: { name: '', email: '',  mobile: '' },
