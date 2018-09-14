@@ -8,7 +8,7 @@
   "private": true,
   "repo": "438078403446.dkr.ecr.ap-southeast-2.amazonaws.com/upride",
   "scripts": {
-    "start": "quasar dev -t ios",
+    "dev": "quasar dev -t ios",
     "deploy": "npm run build:client; npm run build:image; npm run push",
     "build:client": "quasar build -t ios",
     "build:image": "N=$npm_package_name V=$npm_package_version sh -c 'docker build -t $N:$V .'",

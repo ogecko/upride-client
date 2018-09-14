@@ -1,8 +1,8 @@
 const assert = require('assert');
 const feathers = require('@feathersjs/feathers');
-const createStripeCharge = require('../../src/hooks/create_stripe_charge');
+const payment_stripe = require('../../src/hooks/payment_stripe');
 
-describe('\'create_stripe_charge\' hook', () => {
+describe('\'payment_stripe\' hook', () => {
   let app;
 
   beforeEach(() => {
@@ -15,7 +15,7 @@ describe('\'create_stripe_charge\' hook', () => {
     });
 
     app.service('dummy').hooks({
-      before: createStripeCharge()
+      before: payment_stripe()
     });
   });
 

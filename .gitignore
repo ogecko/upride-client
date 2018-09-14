@@ -2,6 +2,7 @@
 *.pem
 .ssh
 .git/credentials
+config/credentials*
 
 # Logs
 logs

@@ -1,8 +1,0 @@
-{
-  "stripe_publishable_key_test": "pk_test_67i5pziUdWAnHpRUS2zq7QhX",
-  "stripe_publishable_key_live": "pk_live_FlWDxkQ5jFtDvNXIzy0CmeFv",
-//   "stripe_secret_key_test": STORE THESE AS DOCKER SECRETS,
-//   "stripe_secret_key_live": STORE THESE AS DOCKER SECRETS,
-//   "stripe_connect_client_id_test": STORE THESE AS DOCKER SECRETS,
-//   "stripe_connect_client_id_live": STORE THESE AS DOCKER SECRETS,
-}

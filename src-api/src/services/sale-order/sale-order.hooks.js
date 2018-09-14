@@ -9,7 +9,7 @@ module.exports = {
     get: [ ],
     create: [
       upride_format_sale_message({ message: 'data.message' }),
-      payment_stripe({ token: 'data.token.token_id', amount: 'data.totalAmount' }),
+      payment_stripe({ token: 'data.token.token_id', amount: 'data.totalAmount', desc: 'Upride Charge', message: 'data.message' }),
       notification_sms_aws({ sender: 'UpRide', mobile: 'data.seller.mobile', message: 'data.message' }),
     ],
     update: [],
