@@ -6,7 +6,11 @@ function aud(x) {
 }
 
 // returns a hook function that sets the context.data.message property to a summary of the sales order (can be used for an SMS)
-module.exports = function (opts={}) {
+module.exports = function (options={}) {
+    const { 
+        message=undefined,          // context path to the message to send
+    } = options;
+
     return context => {
         const f = { 
             ...context.data, 
@@ -24,7 +28,7 @@ module.exports = function (opts={}) {
                         .value()
                         .join('\n')
         }
-        context.data.message = `Hi ${f.seller.name},\n${f.buyer.name} ordered:\n\n${f.products}\n\nPlease hand over the products when safe to do so.\nThanks.`;
+        _.set(context, message, `Hi ${f.seller.name},\n${f.buyer.name} ordered:\n\n${f.products}\n\nPlease hand over the products when safe to do so.\nThanks.`);
     };
 };
   

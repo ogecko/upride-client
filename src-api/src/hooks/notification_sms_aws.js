@@ -1,20 +1,19 @@
 // Load the AWS SDK for Node.js
 const AWS = require('aws-sdk');
 const log = require('../logger');
-const util = require('util');
 const _ = require('lodash');
 
 // returns a hook function that sends an SMS
 // need to ensure EC2 instance has smsPublishingRole (under SNS)
-module.exports = function (opts={}) {
+module.exports = function (options={}) {
     const { 
         message=undefined,          // context path to the message to send
         mobile=undefined,           // context path to the mobile number to SMS to
         sender='NOTICE',            // fixed senderID of SMS message
         region='ap-southeast-2', 
         prefix='+61',
-        live_mode=true,
-    } = opts;
+        live_mode=false,
+    } = options;
     return context => {
         // Create publish parameters
         const params = { 

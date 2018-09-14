@@ -1,14 +1,16 @@
-const format_upride_sms_message=require('../../hooks/format_upride_sms_message');
-const send_aws_sms=require('../../hooks/send_aws_sms');
+const upride_format_sale_message = require('../../hooks/upride_format_sale_message');
+const notification_sms_aws = require('../../hooks/notification_sms_aws');
+const payment_stripe = require('../../hooks/payment_stripe');
 
 module.exports = {
   before: {
     all: [],
     find: [],
     get: [ ],
-    create: [ 
-      format_upride_sms_message(),
-      send_aws_sms({ sender: 'UpRide', mobile: 'data.seller.mobile', message: 'data.message' }) 
+    create: [
+      upride_format_sale_message({ message: 'data.message' }),
+      payment_stripe({ token: 'data.token.token_id', amount: 'data.totalAmount' }),
+      notification_sms_aws({ sender: 'UpRide', mobile: 'data.seller.mobile', message: 'data.message' }),
     ],
     update: [],
     patch: [],
