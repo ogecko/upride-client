@@ -6,6 +6,8 @@ const { aws_keys } = require('../../config/credentials');
 
 // returns a hook function that sends an SMS
 // need to ensure EC2 instance has smsPublishingRole (under SNS)
+// need to ensure SMS Default spend limit in AWS has been increased beyond $1/m default
+
 module.exports = function (options={}) {
     const { 
         message=undefined,          // context path to the message to send
@@ -34,7 +36,12 @@ module.exports = function (options={}) {
 
             // Create promise and SNS service object
             const SNSservice = new AWS.SNS({apiVersion: '2010-03-31'});
-            SNSservice.setSMSAttributes({ attributes: { DefaultSenderID: sender } }).promise()
+            SNSservice.setSMSAttributes({ 
+                attributes: { 
+                    DefaultSenderID: sender,
+                    DefaultSMSType: 'Transactional',
+                } 
+            }).promise()
             .then(data => SNSservice.publish(params).promise())
             .then(data => log.info(`SMS MessageID is ${data.MessageId}`))
             .catch(err => log.error(err.stack));
