@@ -4,8 +4,8 @@ Recharge and refresh while in your Ride-Share vehicle
 
 
 ## Deployment
-This application is deployed as a node:alpine Docker image which runs an Express Server containing
-1. A Vue based Single Page Application served from /public
+This application is deployed as a Node:Alpine Docker image which runs an Express Server containing
+1. A Quasar:Vue based Single Page Application served from /public
 2. A Feathers based set of micro-services served from /api
 
 ### On the AWS Console
