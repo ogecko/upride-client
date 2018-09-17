@@ -10,12 +10,14 @@
       </p>
       <div class="row"><div class="col-12 q-pt-sm bg-black"></div>
       </div>
-      <StoreItem
-        v-for="(item, index) in products"
-        :key="index"
-        :item="item"
-        :index="index"
-      />
+      <div class="row">
+        <StoreItem
+          v-for="(item, index) in products"
+          :key="index"
+          :item="item"
+          :index="index"
+        />
+      </div>
   </q-page>
 </template>
 

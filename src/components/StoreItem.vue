@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="col-xs-12 col-md-6 col-xl-4">
         <img class="product q-mt-lg"  @click="inc()" :alt="item.name" style="width: 70%" :src="'statics/'+this.item.image">
         <p class="text-weight-bold q-my-xs">{{ item.name }}</p>
         <p class="q-body-2 q-my-none">{{ item.description }}</p>
