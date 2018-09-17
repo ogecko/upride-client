@@ -10,10 +10,10 @@ module.exports = function (options = {}) {
   const { 
     token=undefined,            // context path to the stripe token_id
     amount=undefined,           // context path to the amount
-    message='undefined',         // context path to the sms message body
+    message='undefined',        // context path to the sms message body
     currency='aud',             // fixed senderID of SMS message
     desc='Charge', 
-    mode='test',
+    mode=stripe_keys.mode,      // either 'test' or 'live'
   } = options;
 
   return async context => {
@@ -21,11 +21,10 @@ module.exports = function (options = {}) {
     const amount_val = _.get(context, amount)*100;
     const message_val = _.get(context, message);
 
-    log.info(`Create Stripe Charge ${amount_val} to ${token_val}`);
-
     if ((mode=='test'||mode=='live') && token_val) {
+      log.info(`Create Stripe Charge ${amount_val} to ${token_val}`);
       const api_key = stripe_keys[mode].secret_key;
-      const charge = stripe.charges.create({
+      const charge = await stripe.charges.create({
         description: desc,
         statement_descriptor: desc,
         currency,
@@ -35,8 +34,6 @@ module.exports = function (options = {}) {
           message: message_val,
         },
       }, { api_key })
-      .then()
-      .catch();
     }
 
     return context;

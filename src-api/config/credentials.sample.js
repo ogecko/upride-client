@@ -9,11 +9,13 @@
 
 module.exports = {
   aws_keys: {
+    mode: 'test',         // 'test' | 'live' note only live sends SMS
     // Use EC2 IAM roles to share permissions with this node app
     // Use the AWS Console to create an IAM role called smsPublishingRole with full permissions on SNS
     // Ensure that any EC2 instances this app executes on have the IAM role smsPublishingRole
   },
   stripe_keys: {
+    mode: 'test',         // 'test' | 'live' as per Stripe documentation
     test: {
       publishable_key: "",
       secret_key: "",

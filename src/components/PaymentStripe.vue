@@ -4,9 +4,9 @@
     <q-input v-model="fields.email" type="email" stack-label="Email" :before="[{icon: 'fas fa-envelope', handler () {}}]" />
     <q-input v-model="fields.mobile" type="tel" stack-label="Mobile" :before="[{icon: 'fas fa-phone', handler () {}}]" />
     <div v-if="!isFree" class="q-mt-sm q-ml-lg q-caption text-faded">Payment Details</div>
-      <Card v-if="!isFree" class='stripecard q-mt-none'
+      <Card v-if="!isFree && isKeyLoaded" class='stripecard q-mt-none'
         :class='{ complete }'
-        :stripe='stripeKey'
+        :stripe='settings.publishable_key'
         :options='stripeOptions'
         @change='complete = $event.complete'
       />
@@ -42,13 +42,24 @@ export default {
   },
   data() {
     return {
-      stripeKey: 'pk_test_67i5pziUdWAnHpRUS2zq7QhX',
+      settings: { mode: 'test', publishable_key: 'unknown' },      // settings from the api { mode: 'live'|'test', publishable_key: 'xxx' }
       stripeOptions: { },
       complete: false,    // marks whether the CC is complete (ie fully filled out)
       fields: { name: '', email: '',  mobile: '' },
     };
   },
+  created() {
+    this.$api.service('/api/settings').get('stripe')
+      .then(data => this.settings={ ...data })
+      .catch(err => this.$q.notify({ message: err.message}))
+  },
   computed: {
+    isKeyLoaded() {
+      return (this.settings.publishable_key!='unknown')
+    },
+    isTestMode() {
+      return (this.settings.mode=='test')
+    },
     isEmpty() {
       return (this.$store.state.cartTotal<1);
     },
@@ -73,7 +84,7 @@ export default {
       } else {
         createToken().then(data => data.token ?
           this.processSaleOrder(data.token)
-          : console.log('Stripe Error Returned', data.error)
+          : this.$q.notify({ message: data.error.message})
         );
       }
     },
@@ -92,9 +103,14 @@ export default {
           used: token.used,                       // true / false
         }
       };
-      this.$api.service('/api/sale-order').create(saleOrder);
-      this.$store.commit('clearCartContents', saleOrder);
-      this.$router.push('/about');
+      this.$api.service('/api/sale-order').create(saleOrder)
+        .then(data => { 
+          this.$store.commit('clearCartContents', saleOrder);
+          this.$router.push('/about');
+        })
+        .catch(err => {
+          this.$q.notify({ message: err.message})
+        });
     }
   }
 };

@@ -2,6 +2,7 @@
 const AWS = require('aws-sdk');
 const log = require('../logger');
 const _ = require('lodash');
+const { aws_keys } = require('../../config/credentials');
 
 // returns a hook function that sends an SMS
 // need to ensure EC2 instance has smsPublishingRole (under SNS)
@@ -12,7 +13,7 @@ module.exports = function (options={}) {
         sender='NOTICE',            // fixed senderID of SMS message
         region='ap-southeast-2', 
         prefix='+61',
-        live_mode=false,
+        mode=aws_keys.mode,
     } = options;
     return context => {
         // Create publish parameters
@@ -27,7 +28,7 @@ module.exports = function (options={}) {
         
         log.info(`Sent SMS from ${sender} to ${params.PhoneNumber} containing ${params.Message}`);
 
-        if (live_mode) {
+        if (mode=='live') {
             // Set region
             AWS.config.update({ region });
 
