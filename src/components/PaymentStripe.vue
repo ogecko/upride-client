@@ -67,7 +67,7 @@ export default {
       return (this.amount==0);
     },
     isFormComplete() {
-      return (!!this.fields.name && !!this.fields.email && !!this.fields.mobile && (this.isFree || this.complete))
+      return (!!this.fields.name && !!this.fields.email && (this.isFree || this.complete))
     },
     isDisabledPay() {
       return (this.isEmpty || !this.isFormComplete);
