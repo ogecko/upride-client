@@ -28,7 +28,7 @@ module.exports = function (options={}) {
                         .value()
                         .join('\n')
         }
-        _.set(context, message, `Hi ${f.seller.name},\n${f.buyer.name} ordered:\n\n${f.products}\n\nPlease hand over the products when safe to do so.\nThanks.`);
+        _.set(context, message, `Hi ${f.seller.name},\n${f.buyer.name} ordered:\n\n${f.products}\n\nPlease hand over the products when safe to do so. Thanks.`);
     };
 };
   
